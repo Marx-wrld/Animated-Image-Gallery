@@ -14,7 +14,6 @@ export async function getStaticProps(){
     },
   } 
 }
-
 function cn(...classes: string[]){
   return classes.filter(Boolean).join('')
 }
@@ -38,7 +37,7 @@ export default function Gallery ({ images }: {images: Image[]}){
     </div>
   )
 }
-
+//
 function BlurImage ({ image }: { image: Image }) {
   const [isLoading, setLoading] = useState(true)
 
