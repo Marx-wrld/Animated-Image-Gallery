@@ -1,6 +1,6 @@
-import { useState } from 'react'
-import { createClient } from '@supabase/supabase-js'
-import Image from 'next/image'
+import { useState } from 'react';
+import { createClient } from '@supabase/supabase-js';
+import Image from 'next/image';
 
 export async function getStaticProps(){
   const supabaseAdmin = createClient (
@@ -20,10 +20,10 @@ function cn(...classes: string[]){
 }
 
 type Image = {
-  id: number,
-  href: string,
-  imageSrc: string,
-  name: string,
+  id: number
+  href: string
+  imageSrc: string
+  name: string
   username: string
 }
 
@@ -31,9 +31,11 @@ export default function Gallery ({ images }: {images: Image[]}){
   return (
     <div className="mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:max-w-7-xl lg:px-8">
       <div className="grid grid-cols-1 gap-x-6 sm:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
-        { images.map((image) => (
+        { 
+        images.map((image) => (
           <BlurImage key={image.id} image={image} />
-        ))}
+        ))
+        }
       </div>
     </div>
   )
