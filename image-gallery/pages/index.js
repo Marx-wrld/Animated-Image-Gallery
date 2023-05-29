@@ -1,14 +1,41 @@
 import React, { useState } from 'react';
 import Head from 'next/head';
 import { Box, Container, Text } from "@chakra-ui/react";
-import { getCuratedPhotos } from '@/lib/api';
+import { getCuratedPhotos, getQueryPhotos } from '@/lib/api';
 import Image from 'next/image';
-import { GetServerSideProps } from 'next';
 import { Wrap, WrapItem } from '@chakra-ui/react';
+import { Input, IconButton, InputRightElement, InputGroup, useToast } from '@chakra-ui/react';
+import SearchIcon from "@chakra-ui/icons"
 
 export default function Home({ data }) { //getCuratedPhotos fetches images from pexels and stores them in a data variable This data is passed a props to the default function
 
   const [photos, setPhotos] = useState(data); //we'll store the data from pexels API in our state named photos
+
+  const [query, setQuery] = useState("");
+
+  const toast = useToast();
+
+  const handleFormSubmit = async (e) => { 
+    await e.preventDefault();
+    
+    if (query == "" ){
+      toast({
+        title: "Error",
+        description: "Empty Search",
+        status: "error",
+        duration: 9000,
+        isClosable: true,
+        position: "top"
+      });
+    } 
+    else{
+    
+    const res = await getQueryPhotos(query); //fetches images based on a user's query
+    //It passes the getQueryPhotos function and the data returned from the function overrides the previous value in the photos variable using setPhotos(res)
+    await setPhotos(res); 
+    await setQuery("");
+    }
+  };
 
   return (
     <div>
@@ -28,6 +55,16 @@ export default function Home({ data }) { //getCuratedPhotos fetches images from 
           >
             Image Gallery
           </Text>
+          <form onSubmit={handleFormSubmit} action="">
+          <InputGroup pb="1rem">
+            <Input placeholder='Search for Images' variant="ghost" />
+            <InputRightElement children={<IconButton aria-label='Search' icon={<SearchIcon />} //Adds an element to the right of the output
+            onClick={handleFormSubmit}
+            bg="pink.400" color="white"/>
+          } 
+            />
+          </InputGroup>
+          </form>
         </Container>
         <Wrap px='1rem' spacing={4}>
           {
