@@ -5,7 +5,8 @@ import { getCuratedPhotos, getQueryPhotos } from '@/lib/api';
 import Image from 'next/image';
 import { Wrap, WrapItem } from '@chakra-ui/react';
 import { Input, IconButton, InputRightElement, InputGroup, useToast } from '@chakra-ui/react';
-import SearchIcon from "@chakra-ui/icons"
+import SearchIcon from "@chakra-ui/icons";
+import Link from 'next/link';
 
 export default function Home({ data }) { //getCuratedPhotos fetches images from pexels and stores them in a data variable This data is passed a props to the default function
 
@@ -74,9 +75,13 @@ export default function Home({ data }) { //getCuratedPhotos fetches images from 
             //pic.id gives each image a unique id, overflow ensures the image doesn't overflow the wrapItem, _hover changes the box shadow when you hover over the image.
               <WrapItem key={pic.id} boxShadow="base" rounded="20px" overflow="hidden" bg="white" lineHeight="0"
                 _hover={{ boxShadow: "dark-lg" }}>
-
+                  
+                <Link href={`/photos/$pic.id`}>
+                <a>
                 <Image src={pic.src.portrait} width={600} height={400} alt={pic.url} /> 
                 {/*Next.js version 10 comes with inbuilt support fro image optimization which reduces the image size to webP */}
+                </a>
+                </Link>
 
               </WrapItem>
             ))

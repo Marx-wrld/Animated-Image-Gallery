@@ -25,3 +25,15 @@ export const getQueryPhotos = async (query) => {
     const responseJson = await res.json();
     return responseJson.photos;
 };
+
+export const getPhotoById = async (id) => {
+    const res = await fetch(`https://api.pexels.com/v1/photos/${id}`, {
+        //This section uses the photos endpoint to get a single image from pexels api
+        //getPhotoById returns the reponseJson and not responseJson.photos
+        headers: {
+            Authorization: API_KEY,
+        },
+    });
+    const responseJson = await res.json();
+    return responseJson;
+};
