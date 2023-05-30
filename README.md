@@ -3,10 +3,20 @@ A performant image gallery site that can handle hundreds of large images and del
 - I'll use the pexels Api and chakra-UI component library. I'll also use next.js component to optimize the images fetched from the pexels API
 Run - (npx create-next-app image-gallery)
 
+Head over to https://www.pexels.com/api/new/ and create a new API key. Rename `.env.example` to `.env.local` and add the API key in it.
+
+```
+NEXT_PUBLIC_PEXELS_API_KEY = 
+```
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
 
+Install the dependencies by running the following command.
+
+```bash
+npm install
+```
 First, run the development server:
 
 ```bash
@@ -27,3 +37,6 @@ The `pages/api` directory is mapped to `/api/*`. Files in this directory are tre
 
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
+## Deploy on Vercel
+
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/import?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
