@@ -6,7 +6,7 @@ Run - (npx create-next-app image-gallery)
 Head over to https://www.pexels.com/api/new/ and create a new API key. Rename `.env.example` to `.env.local` and add the API key in it.
 
 ```
-NEXT_PUBLIC_PEXELS_API_KEY = 
+PEXELS_API_KEY = 
 ```
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
