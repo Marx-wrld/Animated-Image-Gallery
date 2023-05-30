@@ -62,7 +62,8 @@ export default function Home({ data }) { //getCuratedPhotos fetches images from 
           <InputGroup pb="1rem">
             <Input placeholder='Search for Images' variant="ghost" value={query} />
 
-            <InputRightElement children={<IconButton aria-label='Search' icon={<SearchIcon />} //Adds an element to the right of the output
+            <InputRightElement children={<IconButton aria-label='Search' icon={<SearchIcon />} 
+            //Adds an element to the right of the output
             onClick={handleFormSubmit}
             bg="pink.400" color="white"/>
           } 
@@ -80,10 +81,10 @@ export default function Home({ data }) { //getCuratedPhotos fetches images from 
                 _hover={{ boxShadow: "dark-lg" }}>
 
                 <Link href={`/photos/$pic.id`}>
-                <a>
-                <Image src={pic.src.portrait} width={600} height={400} alt={pic.url} /> 
+
+                <Image src={pic.src.portrait} width={400} height={200} alt={pic.url} /> 
                 {/*Next.js version 10 comes with inbuilt support fro image optimization which reduces the image size to webP */}
-                </a>
+
                 </Link>
 
               </WrapItem>
@@ -96,8 +97,8 @@ export default function Home({ data }) { //getCuratedPhotos fetches images from 
 }
 
 export async function getServerSideProps() { //using getServerSideProps function available in Next.js, which fetches data on each request and the getCuratedPhotos function to fetch data from pexels API and inject it to our page
-  const res = await fetch();
-  const data = await res.json();
+
+  const data = await getCuratedPhotos()
   return {
     props: {
       data
