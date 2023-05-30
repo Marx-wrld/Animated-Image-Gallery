@@ -5,8 +5,9 @@ import { getCuratedPhotos, getQueryPhotos } from '@/lib/api';
 import Image from 'next/image';
 import { Wrap, WrapItem } from '@chakra-ui/react';
 import { Input, IconButton, InputRightElement, InputGroup, useToast } from '@chakra-ui/react';
-import SearchIcon from "@chakra-ui/icons";
+import {SearchIcon} from "@chakra-ui/icons";
 import Link from 'next/link';
+import { GetServerSideProps } from 'next';
 
 export default function Home({ data }) { //getCuratedPhotos fetches images from pexels and stores them in a data variable This data is passed a props to the default function
 
@@ -17,6 +18,7 @@ export default function Home({ data }) { //getCuratedPhotos fetches images from 
   const toast = useToast();
 
   const handleFormSubmit = async (e) => { 
+
     await e.preventDefault();
     
     if (query == "" ){
@@ -44,11 +46,11 @@ export default function Home({ data }) { //getCuratedPhotos fetches images from 
         <title>Image Gallery</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Box overflow="hidden" bg="purple.300" minH="100vh">
+      <Box overflow="hidden" bg="blue.200" minH="100vh">
         <Container>
           <Text
-            color='pink.800'
-            fontWeight="bold"
+            color='pink.600'
+            fontWeight="semibold"
             mb="1rem"
             textAlign='center'
             textDecoration='underline'
@@ -56,9 +58,10 @@ export default function Home({ data }) { //getCuratedPhotos fetches images from 
           >
             Image Gallery
           </Text>
-          <form onSubmit={handleFormSubmit} action="">
+          <form onSubmit={handleFormSubmit}>
           <InputGroup pb="1rem">
-            <Input placeholder='Search for Images' variant="ghost" />
+            <Input placeholder='Search for Images' variant="ghost" value={query} />
+
             <InputRightElement children={<IconButton aria-label='Search' icon={<SearchIcon />} //Adds an element to the right of the output
             onClick={handleFormSubmit}
             bg="pink.400" color="white"/>
@@ -67,7 +70,7 @@ export default function Home({ data }) { //getCuratedPhotos fetches images from 
           </InputGroup>
           </form>
         </Container>
-        <Wrap px='1rem' spacing={4}>
+        <Wrap px='1rem' spacing={4} justify="center">
           {
             photos.map((pic) => ( //to display images we'll map over the photos array and pass the src.original in the src attribute of the img element.
 
@@ -75,7 +78,7 @@ export default function Home({ data }) { //getCuratedPhotos fetches images from 
             //pic.id gives each image a unique id, overflow ensures the image doesn't overflow the wrapItem, _hover changes the box shadow when you hover over the image.
               <WrapItem key={pic.id} boxShadow="base" rounded="20px" overflow="hidden" bg="white" lineHeight="0"
                 _hover={{ boxShadow: "dark-lg" }}>
-                  
+
                 <Link href={`/photos/$pic.id`}>
                 <a>
                 <Image src={pic.src.portrait} width={600} height={400} alt={pic.url} /> 
@@ -93,7 +96,8 @@ export default function Home({ data }) { //getCuratedPhotos fetches images from 
 }
 
 export async function getServerSideProps() { //using getServerSideProps function available in Next.js, which fetches data on each request and the getCuratedPhotos function to fetch data from pexels API and inject it to our page
-  const data = await getCuratedPhotos();
+  const res = await fetch();
+  const data = await res.json();
   return {
     props: {
       data

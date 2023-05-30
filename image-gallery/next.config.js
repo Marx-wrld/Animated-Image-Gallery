@@ -8,6 +8,10 @@ module.exports = nextConfig
 module.exports = {
   images: {
     domains: 
-    ["images.pexels.com"],
+    ["pexels.com"],
   },
 };
+
+// const { withSuperjson } = require('next-superjson')
+
+// module.exports = withSuperjson()(nextConfig)
