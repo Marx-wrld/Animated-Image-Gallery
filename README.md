@@ -2,6 +2,8 @@
 A performant image gallery site that can handle hundreds of large images and deliver a great user experience.
 - I'll use the pexels Api and chakra-UI component library. I'll also use next.js component to optimize the images fetched from the pexels API
 Run - (npx create-next-app image-gallery)
+
+
 ![2023-05-30 10_32_50-](https://github.com/Marx-wrld/Animated-Image-Gallery/assets/105711066/29118daf-5d4d-4995-88fe-45ae1d48ca43)
 
 ![2023-05-30 10_32_18-](https://github.com/Marx-wrld/Animated-Image-Gallery/assets/105711066/feb082dc-4f0d-4e09-8219-e57f5f29325f)
