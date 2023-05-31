@@ -60,7 +60,8 @@ export default function Home({ data }) { //getCuratedPhotos fetches images from 
           </Text>
           <form onSubmit={handleFormSubmit}>
           <InputGroup pb="1rem">
-            <Input placeholder='Search for Images' variant="ghost" value={query} />
+            <Input placeholder='Search for Images' variant="ghost" value={query} 
+            onChange={(e) => setQuery(e.target.value)} />
 
             <InputRightElement children={<IconButton aria-label='Search' icon={<SearchIcon />} 
             //Adds an element to the right of the output
@@ -73,14 +74,14 @@ export default function Home({ data }) { //getCuratedPhotos fetches images from 
         </Container>
         <Wrap px='1rem' spacing={4} justify="center">
           {
-            photos.map((pic) => ( //to display images we'll map over the photos array and pass the src.original in the src attribute of the img element.
-
+            photos.map((pic) => ( 
+            //to display images we'll map over the photos array and pass the src.original in the src attribute of the img element.
 
             //pic.id gives each image a unique id, overflow ensures the image doesn't overflow the wrapItem, _hover changes the box shadow when you hover over the image.
               <WrapItem key={pic.id} boxShadow="base" rounded="20px" overflow="hidden" bg="white" lineHeight="0"
                 _hover={{ boxShadow: "dark-lg" }}>
 
-                <Link href={`/photos/$pic.id`}>
+                <Link href={`/photos/${pic.id}`}>
 
                 <Image src={pic.src.portrait} width={400} height={200} alt={pic.url} /> 
                 {/*Next.js version 10 comes with inbuilt support fro image optimization which reduces the image size to webP */}
@@ -98,7 +99,7 @@ export default function Home({ data }) { //getCuratedPhotos fetches images from 
 
 export async function getServerSideProps() { //using getServerSideProps function available in Next.js, which fetches data on each request and the getCuratedPhotos function to fetch data from pexels API and inject it to our page
 
-  const data = await getCuratedPhotos()
+  const data = await getCuratedPhotos();
   return {
     props: {
       data
