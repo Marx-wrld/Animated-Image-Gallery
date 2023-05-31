@@ -3,7 +3,7 @@ import { Box, Divider, Center, Text, Flex, Spacer, Button } from "@chakra-ui/rea
 import Image from "next/image";
 import Head from "next/head";
 import Link from "next/link";
-import { InfoIcon, AtSignIcon } from "@chakra-ui/icons"
+import { InfoIcon, AtSignIcon } from "@chakra-ui/icons";
 
 export default function Photos({pic}) {
     return (
