@@ -2,7 +2,7 @@ const API_KEY = process.env.PEXELS_API_KEY; //creating a variable API_KEY that a
 
 export const getCuratedPhotos = async () => { //creatting an asynchronous function getCuratedPhotos that using the fetch method to fetch data from our API
     const res = await fetch(
-        `https://api.pexels.com/v1/curated?page=10&per_page=10`, //send the 11th page and 18 photos per page
+        `https://api.pexels.com/v1/curated?page=7&per_page=10`, //send the 11th page and 18 photos per page
         {
             headers:{
                 Authorization: API_KEY,
@@ -37,3 +37,4 @@ export const getPhotoById = async (id) => {
     const responseJson = await res.json();
     return responseJson;
 };
+
