@@ -4,6 +4,7 @@ import Image from "next/image";
 import Head from "next/head";
 import Link from "next/link";
 import { InfoIcon, AtSignIcon } from "@chakra-ui/icons";
+import { hydrate, render } from "react-dom"
 
 export default function Photos({pic}) {
     return (
@@ -29,7 +30,7 @@ export default function Photos({pic}) {
                     <Spacer />
                     <Link href={`/`}>
                         <Button as="a" borderRadius="full" colorScheme="pink" fontSize="lg" size="lg" cursor="pointer" >
-                            Home
+                        🏠 Home
                         </Button>
                     </Link>
                 </Flex>
@@ -37,7 +38,7 @@ export default function Photos({pic}) {
 
                 <Center>
                     <Box as="a" target="_blank" href={pic.url}>
-                        <Image src={pic.src.original}
+                        <Image alt="" src={pic.src.original}
                             width={pic.width / 4} //scaling the image by dividing the original width and height by 4
                             height={pic.height / 4}
                             quality={50}
