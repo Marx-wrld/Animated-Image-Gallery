@@ -8,6 +8,9 @@ Run - (npx create-next-app image-gallery)
 
 ![2023-05-30 10_32_18-](https://github.com/Marx-wrld/Animated-Image-Gallery/assets/105711066/feb082dc-4f0d-4e09-8219-e57f5f29325f)
 
+##### Image Info
+![2023-06-05 12_41_00-](https://github.com/Marx-wrld/Animated-Image-Gallery/assets/105711066/5726bbba-98f5-45e6-935f-ce3decd46ab9)
+
 Head over to https://www.pexels.com/api/new/ and create a new API key. Rename `.env.example` to `.env.local` and add the API key in it.
 
 ```
