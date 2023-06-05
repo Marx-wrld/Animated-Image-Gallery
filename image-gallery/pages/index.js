@@ -7,7 +7,6 @@ import { Wrap, WrapItem } from '@chakra-ui/react';
 import { Input, IconButton, InputRightElement, InputGroup, useToast } from '@chakra-ui/react';
 import {SearchIcon} from "@chakra-ui/icons";
 import Link from 'next/link';
-import { GetServerSideProps } from 'next';
 
 export default function Home({ data }) { //getCuratedPhotos fetches images from pexels and stores them in a data variable This data is passed a props to the default function
 
@@ -63,11 +62,13 @@ export default function Home({ data }) { //getCuratedPhotos fetches images from 
             <Input placeholder='Search for Images' variant="ghost" value={query} 
             onChange={(e) => setQuery(e.target.value)} />
 
-            <InputRightElement children={<IconButton aria-label='Search' icon={<SearchIcon />} 
-            //Adds an element to the right of the output
-            onClick={handleFormSubmit}
-            bg="pink.400" color="white"/>
-          } 
+            <InputRightElement children=
+              {
+              <IconButton aria-label='Search' icon={<SearchIcon />} 
+              //Adds an element to the right of the output
+              onClick={handleFormSubmit}
+              bg="pink.400" color="white"/>
+              } 
             />
           </InputGroup>
           </form>
@@ -83,11 +84,12 @@ export default function Home({ data }) { //getCuratedPhotos fetches images from 
 
                 <Link href={`/photos/${pic.id}`}>
 
+                <>
                 <Image src={pic.src.portrait} width={400} height={200} alt={pic.url} /> 
-                {/*Next.js version 10 comes with inbuilt support fro image optimization which reduces the image size to webP */}
+                {/*Next.js version 10 comes with inbuilt support from image optimization which reduces the image size to webP */}
+                </>
 
                 </Link>
-
               </WrapItem>
             ))
           }
